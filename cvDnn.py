@@ -16,6 +16,7 @@ with tf.Session() as sess:
     #img = cv.imread('example.jpg')
     #img = cv.imread('hq-vin-diesel-paul-walker-holding-guns-psd-445719.png')   # works well
     img = cv.imread('9268592-3x2-940x627.jpg')
+    print( type(img) , "   type!")
     rows = img.shape[0]
     cols = img.shape[1]
     inp = cv.resize(img, (300, 300))
@@ -36,7 +37,7 @@ with tf.Session() as sess:
         classId = int(out[3][0][i])
         score = float(out[1][0][i])
         bbox = [float(v) for v in out[2][0][i]]
-        print(i, " con score: ", score)
+        #print(i, " con score: ", score)
         if score > 0.5:
             x = bbox[1] * cols
             y = bbox[0] * rows
